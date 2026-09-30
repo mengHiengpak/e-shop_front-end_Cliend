@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../hook/LanguageContext'
 import {useSignin} from "../hook/Auth/useSignin.js";
 
@@ -8,7 +8,14 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const { t } = useLanguage()
 const navigate = useNavigate()
+const location = useLocation()
 const { signin, isLoading, error } = useSignin()
+
+// The page that sent us here before the customer was signed in.
+const from = location.state?.from
+const redirectTo = from?.pathname
+  ? `${from.pathname}${from.search || ''}`
+  : '/'
 
 const handleSubmit = async (e) => {
   e.preventDefault() 
@@ -17,7 +24,7 @@ const handleSubmit = async (e) => {
     const res = await signin(email, password)
 
     if (res?.success) {
-      navigate('/', { replace: true }) 
+      navigate(redirectTo, { replace: true }) 
     }
   } catch (err) {
     console.error('Sign in failed:', err)
@@ -80,7 +87,7 @@ const handleSubmit = async (e) => {
               >
                 {t('PASSWORD')}
               </label>
-              <Link to="/forgot" className="text-xs text-amber-800 hover:underline">
+              <Link to="/forgot" state={location.state} className="text-xs text-amber-800 hover:underline">
                 {t('Forgot')}
               </Link>
             </div>
@@ -122,7 +129,7 @@ const handleSubmit = async (e) => {
         {/* Footer Link */}
         <div className="mt-8 border-t border-slate-100 pt-6 text-center text-xs text-slate-500">
           {t('Need_an_account')} {' '}
-          <Link to="/signup" className="font-semibold text-slate-900 hover:underline">
+          <Link to="/signup" state={location.state} className="font-semibold text-slate-900 hover:underline">
             {t('Register_here')}
           </Link>
         </div>

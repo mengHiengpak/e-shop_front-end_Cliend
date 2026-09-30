@@ -15,7 +15,8 @@ const Signin = lazy(() => import("./components/auth/Signin"))
 const Signup = lazy(() => import("./components/auth/Signup"))
 const ForgetPS = lazy(() => import("./components/auth/ForgetPS"))
 const AuthRedirect = lazy(() => import("./components/AuthRedirect"))
-const BuyMethod = lazy(() => ("./components/BuyMethod.jsx"))
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"))
+const BuyMethod = lazy(() => import("./components/BuyMethod.jsx"))
 const WelletMethod = lazy(() => import("./components/WelletMethod.jsx"))
 const ProductStorePayment = lazy(() => import("./components/assets/ProductStorePayment.jsx"))
 import { lazy, Suspense } from "react"
@@ -30,10 +31,10 @@ function App() {
         <Route path="signin" element={<AuthRedirect><Signin/></AuthRedirect>}></Route>
         <Route path="signup" element={<AuthRedirect><Signup/></AuthRedirect>}></Route>
         <Route path="forgot" element={<AuthRedirect><ForgetPS/></AuthRedirect>}></Route>
-        <Route path="/account/:id/method" element={<BuyMethod />} />
-        <Route path='/account/:id/methodProductStore' element={<ProductStorePayment />} />
-        <Route path="/account/wallets/account/walltes" element={<WelletMethod/>}></Route>
-        <Route path="/" element={<Adminlayout />}>
+        <Route path="/account/:id/method" element={<ProtectedRoute><BuyMethod /></ProtectedRoute>} />
+        <Route path='/account/:id/methodProductStore' element={<ProtectedRoute><ProductStorePayment /></ProtectedRoute>} />
+        <Route path="/account/wallets/account/walltes" element={<ProtectedRoute><WelletMethod/></ProtectedRoute>}></Route>
+        <Route path="/" element={<ProtectedRoute><Adminlayout /></ProtectedRoute>}>
           <Route index element={<Home />} />
           <Route path="products" element={<Product />} />
           <Route path="product/:id" element={<ProductDetail />} />
