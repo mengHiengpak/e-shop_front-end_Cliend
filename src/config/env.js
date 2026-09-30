@@ -10,8 +10,15 @@ const isLocalApi = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?/i.test(e
 // holds no matter which mode the bundle was built with.
 const isDevServer = Boolean(import.meta.env.DEV)
 
-const apiUrlBase =
-  isDevServer && envApi ? envApi : isLocalApi || !envApi ? PROD_API : envApi
+// In dev the browser only ever calls its own origin and server.proxy forwards
+// /api to the real backend. That keeps the session cookie first-party, which is
+// what makes it survive on a phone; pointing straight at the backend address
+// would break on any device that is not the machine running the backend.
+const apiUrlBase = isDevServer
+  ? '/api'
+  : isLocalApi || !envApi
+    ? PROD_API
+    : envApi
 
 export {
 apiUrlBase
