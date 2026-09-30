@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../hook/LanguageContext'
 import {useSignin} from "../hook/Auth/useSignin.js";
-import ConnectionInfo from '../ConnectionInfo.jsx'
 
 function Signin() {
 const [email, setEmail] = useState('')
@@ -112,12 +111,6 @@ const handleSubmit = async (e) => {
             </div>
           )}
 
-          {location.state?.reason === 'no-session' && !error && (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 py-2.5 px-4 text-xs font-semibold text-amber-800">
-              Sign in to continue. The website is only available to signed in users.
-            </div>
-          )}
-
           {/* Submit Button */}
           <button
             type="submit"
@@ -130,13 +123,11 @@ const handleSubmit = async (e) => {
 
         {/* Footer Link */}
         <div className="mt-8 border-t border-slate-100 pt-6 text-center text-xs text-slate-500">
-          {t('Need_an_account')}{' '}
-          <Link to="/signup" state={location.state} className="font-semibold text-slate-900 hover:underline">
+          {t('Need_an_account')} {' '}
+          <Link to="/signup" className="font-semibold text-slate-900 hover:underline">
             {t('Register_here')}
           </Link>
         </div>
-
-        {import.meta.env.DEV && <ConnectionInfo />}
       </div>
     </div>
   )
