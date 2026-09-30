@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 
+
 const Adminlayout = lazy(() => import("./layout/Adminlayout"))
 const Home = lazy(() => import("./page/Home"))
 const Product = lazy(() => import("./page/Product"))
@@ -23,6 +24,9 @@ const ProductStorePayment = lazy(() => import("./components/assets/ProductStoreP
 const Loading = lazy(() => import("./components/Loading.jsx"))
 
 function App() {
+  useEffect(() => {
+    document.title = import.meta.env.VITE_APP_NAME || "E-shop";
+  }, []);
   return (
     <BrowserRouter>
       <Toaster position="top-center" />
