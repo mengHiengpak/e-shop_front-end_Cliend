@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../hook/LanguageContext'
 import {useSignup} from "../hook/Auth/useSignup.js";
 
@@ -10,15 +10,14 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const {t} = useLanguage()
-const navigate = useNavigate()
-const location = useLocation()
-const {signup, isLoading, error} = useSignup();
+  const navigate = useNavigate()
+  const {signup, isLoading, error} = useSignup();
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
         try {
           await signup({phone,name, email, password,confirmPassword})
-          navigate('/signin', { state: location.state })
+          navigate('/signin')
         } catch (err) {
           console.log('Register is failed:', err)
         }
