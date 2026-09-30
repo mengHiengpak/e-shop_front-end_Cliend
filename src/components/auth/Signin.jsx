@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../hook/LanguageContext'
 import {useSignin} from "../hook/Auth/useSignin.js";
 
@@ -8,6 +8,7 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const { t } = useLanguage()
 const navigate = useNavigate()
+const location = useLocation()
 const { signin, isLoading, error } = useSignin()
 
 const handleSubmit = async (e) => {
@@ -17,7 +18,8 @@ const handleSubmit = async (e) => {
     const res = await signin(email, password)
 
     if (res?.success) {
-      navigate('/', { replace: true }) 
+      const from = location.state?.from
+      navigate(from ? `${from.pathname}${from.search}` : '/', { replace: true }) 
     }
   } catch (err) {
     console.error('Sign in failed:', err)
