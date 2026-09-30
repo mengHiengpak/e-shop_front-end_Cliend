@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../hook/LanguageContext'
+import ConnectionInfo from '../ConnectionInfo.jsx'
 import {useSignin} from "../hook/Auth/useSignin.js";
 
 function Signin() {
@@ -8,7 +9,12 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const { t } = useLanguage()
 const navigate = useNavigate()
+const location = useLocation()
 const { signin, isLoading, error } = useSignin()
+
+// RequireAuth records where an unauthenticated visitor was heading, so signing
+// in returns them there instead of always dumping them on the home page.
+const from = location.state?.from
 
 const handleSubmit = async (e) => {
   e.preventDefault() 
@@ -16,8 +22,10 @@ const handleSubmit = async (e) => {
   try {
     const res = await signin(email, password)
 
+    // signin() only reports success once the server has confirmed the session
+    // cookie, so reaching this branch means the app really is signed in.
     if (res?.success) {
-      navigate('/', { replace: true }) 
+      navigate(from ? `${from.pathname}${from.search || ''}` : '/', { replace: true }) 
     }
   } catch (err) {
     console.error('Sign in failed:', err)
@@ -126,6 +134,8 @@ const handleSubmit = async (e) => {
             {t('Register_here')}
           </Link>
         </div>
+
+        <ConnectionInfo />
       </div>
     </div>
   )
