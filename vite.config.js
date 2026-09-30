@@ -5,7 +5,12 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const apiTarget = (env.VITE_URL_BASE || 'http://localhost:3000/api').trim()
+  const apiBase = (env.VITE_URL_BASE || 'http://localhost:3000/api').trim()
+
+  // The request path the browser sends already contains the backend's own "/api"
+  // prefix, and http-proxy puts the target's path in front of it. Reducing the
+  // target to the bare origin keeps "/api" from being duplicated.
+  const apiOrigin = apiBase.replace(/^(https?:\/\/[^/?#]+).*$/, '$1')
 
   return {
     plugins: [react(), tailwindcss()],
@@ -20,7 +25,7 @@ export default defineConfig(({ mode }) => {
       // itself, and a cross-site session cookie is dropped by mobile browsers.
       proxy: {
         '/api': {
-          target: apiTarget,
+          target: apiOrigin,
           changeOrigin: true,
         },
       },

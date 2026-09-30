@@ -11,7 +11,7 @@ function RequireAuth({ children }) {
     }
 
     if (!data) {
-        return <Navigate to="/signin" replace state={{ from: location }} />
+        return <Navigate to="/signin" replace state={{ from: location, reason: 'no-session' }} />
     }
 
     return children
