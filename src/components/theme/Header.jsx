@@ -121,7 +121,7 @@ function Header() {
 
                     <div onClick={() => {
                         setIsOpen(true)
-                    }} className='flex items-center flex-shrink-0 bg-red-100 rounded-2xl py-1.5 px-3 sm:px-3 cursor-pointer hover:bg-red-200 gap-2 sm:gap-3'>
+                    }} className='flex items-center flex-shrink-0 bg-red-100 rounded-2xl py-1.5 px-10 sm:px-3 cursor-pointer hover:bg-red-200 gap-2 sm:gap-3'>
                         <span className='text-xl text-red-500'><FaShoppingCart /></span>
                         <div className='grid grid-cols-1 text-sm'>
                             <span className='hidden sm:block'>{t('my_card')}</span>
