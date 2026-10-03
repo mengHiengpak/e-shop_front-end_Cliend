@@ -95,14 +95,14 @@ function Header() {
 
             <section className=' shadow-b-sm px-3 py-2 md:p-2 shadow-amber-200 font-semibold'>
                 <nav className='max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-4 md:gap-5'>
-                    <button
+                    {/*<button
                         type="button"
                         onClick={() => setIsMenuOpen(true)}
                         className="md:hidden flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
                         aria-label="Open menu"
                     >
                         <FaBars className="text-xl text-[#1A1D20]" />
-                    </button>
+                    </button>*/}
 
                     <Link to="/" className="flex-shrink-0 flex items-center gap-0.5 group">
                         <span className="font-black text-xl sm:text-2xl text-[#1A1D20] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>e-shop</span>
@@ -199,14 +199,14 @@ function Header() {
                             <span className="font-black text-2xl text-[#1A1D20] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>e-shop</span>
                             <span className="w-2 h-2 rounded-full bg-[#FF5243] mb-0.5" />
                         </div>
-                        {/*<button
+                        <button
                             type="button"
                             onClick={() => setIsMenuOpen(false)}
                             className="grid h-9 w-9 place-items-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100 transition-colors"
                             aria-label="Close menu"
                         >
                             <FaTimes />
-                        </button>*/}
+                        </button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-1">
