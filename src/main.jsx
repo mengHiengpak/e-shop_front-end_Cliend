@@ -5,11 +5,13 @@ import App from './App.jsx'
 import { LanguageProvider } from './components/hook/LanguageContext.jsx'
 import { AuthProvider } from './components/hook/Auth/AuthContext.jsx'
 
-if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_ERUDA === 'true') {
-  import('eruda').then((eruda) => {
-    eruda.default.init()
+import('eruda')
+  .then((mod) => {
+    const eruda = mod.default ?? mod
+    if (typeof eruda?.init === 'function') eruda.init()
+    else console.error('[eruda] loaded but no init() on export', Object.keys(mod))
   })
-}
+  .catch((err) => console.error('[eruda] failed to load', err))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
