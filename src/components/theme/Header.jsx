@@ -96,7 +96,7 @@ function Header() {
             <section className=' shadow-b-sm px-3 py-2 md:p-2 shadow-amber-200 font-semibold'>
                 <nav className='max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-4 md:gap-5'>
 
-                    <Link to="/" className="flex-shrink-0 flex items-center gap-0.5 group">
+                    <Link to="/" className="flex-shrink-0 ml-3 flex items-center gap-0.5 group">
                         <span className="font-black text-xl sm:text-2xl text-[#1A1D20] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>e-shop</span>
                         <span className="w-2 h-2 rounded-full bg-[#FF5243] mb-0.5 group-hover:scale-125 transition-transform" />
                     </Link>
