@@ -35,6 +35,12 @@ export function AuthProvider({ children }) {
   }, [])
 
   useEffect(() => {
+    const onUnauthorized = () => clearUser()
+    window.addEventListener('auth:unauthorized', onUnauthorized)
+    return () => window.removeEventListener('auth:unauthorized', onUnauthorized)
+  }, [clearUser])
+
+  useEffect(() => {
     refetch()
   }, [refetch])
 

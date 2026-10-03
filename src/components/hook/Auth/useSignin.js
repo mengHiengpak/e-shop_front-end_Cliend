@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { api } from "../../../config/app.js";
+import { setToken } from "../../../config/token.js";
 import { AuthContext } from "./AuthContext.jsx";
 import toast from "react-hot-toast";
 
@@ -14,6 +15,7 @@ export const useSignin = () => {
         setError(null);
         try {
             const res = await api.post('/customer/signin', {email, password})
+            setToken(res?.data?.result?.token)
             toast.success(res?.data?.message || 'Signed in successfully!')
             await refetch()
             return res.data

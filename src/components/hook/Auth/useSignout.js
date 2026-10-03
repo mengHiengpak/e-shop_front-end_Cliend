@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
 import { api } from "../../../config/app.js";
+import { setToken } from "../../../config/token.js";
 import { AuthContext } from "./AuthContext.jsx";
 
 function useSignout() {
@@ -12,6 +13,7 @@ function useSignout() {
         try {
             setIsLoading(true)
             const res = await api.post('/customer/signout')
+            setToken("")
             clearUser()
             toast.success(res?.data?.message || 'Signed out successfully!')
             return res.data
