@@ -22,6 +22,7 @@ const ProductStorePayment = lazy(() => import("./components/assets/ProductStoreP
 import { lazy, Suspense } from "react"
 const Loading = lazy(() => import("./components/Loading.jsx"))
 
+
 function App() {
   return (
     <BrowserRouter>
