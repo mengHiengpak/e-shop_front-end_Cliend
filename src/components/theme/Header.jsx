@@ -199,14 +199,14 @@ function Header() {
                             <span className="font-black text-2xl text-[#1A1D20] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>e-shop</span>
                             <span className="w-2 h-2 rounded-full bg-[#FF5243] mb-0.5" />
                         </div>
-                        <button
+                        {/*<button
                             type="button"
                             onClick={() => setIsMenuOpen(false)}
                             className="grid h-9 w-9 place-items-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100 transition-colors"
                             aria-label="Close menu"
                         >
                             <FaTimes />
-                        </button>
+                        </button>*/}
                     </div>
 
                     <div className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-1">
