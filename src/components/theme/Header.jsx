@@ -95,14 +95,6 @@ function Header() {
 
             <section className=' shadow-b-sm px-3 py-2 md:p-2 shadow-amber-200 font-semibold'>
                 <nav className='max-w-7xl mx-auto flex justify-between items-center gap-2 sm:gap-4 md:gap-5'>
-                    {/*<button
-                        type="button"
-                        onClick={() => setIsMenuOpen(true)}
-                        className="md:hidden flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
-                        aria-label="Open menu"
-                    >
-                        <FaBars className="text-xl text-[#1A1D20]" />
-                    </button>*/}
 
                     <Link to="/" className="flex-shrink-0 flex items-center gap-0.5 group">
                         <span className="font-black text-xl sm:text-2xl text-[#1A1D20] tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>e-shop</span>
