@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter>
       <Toaster position="top-center" />
       <Suspense fallback={<Loading/>}>
-              <Routes>
+        <Routes>
         <Route path="signin" element={<AuthRedirect><Signin/></AuthRedirect>}></Route>
         <Route path="signup" element={<AuthRedirect><Signup/></AuthRedirect>}></Route>
         <Route path="forgot" element={<AuthRedirect><ForgetPS/></AuthRedirect>}></Route>

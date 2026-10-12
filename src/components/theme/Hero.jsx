@@ -45,7 +45,7 @@ function Hero() {
 
                         <div className="pt-8 border-t border-gray-200 flex flex-wrap items-center gap-x-8 gap-y-4 sm:gap-10">
                             <div className="flex flex-col">
-                                <span className="text-2xl font-black text-[#1A1D20]">10K+</span>
+                                <span className="text-2xl font-black text-[#1A1D20]">100+</span>
                                 <span className="text-sm text-gray-500 uppercase tracking-wider">{t('products_label')}</span>
                             </div>
                             <div className="flex flex-col">
@@ -56,7 +56,7 @@ function Hero() {
                                 <span className="text-sm text-gray-500 uppercase tracking-wider">{t('avg_rating')}</span>
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-2xl font-black text-[#1A1D20]">500K+</span>
+                                <span className="text-2xl font-black text-[#1A1D20]">1K+</span>
                                 <span className="text-sm text-gray-500 uppercase tracking-wider">{t('customers_label')}</span>
                             </div>
                         </div>
