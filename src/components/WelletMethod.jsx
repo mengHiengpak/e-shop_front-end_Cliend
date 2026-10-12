@@ -204,7 +204,7 @@ function WelletMethod({ price = 0 }) {
                                 step="0.01"
                                 required
                                 autoFocus
-                                placeholder={amount > 0 ? `${amount} $` : 'Enter amount'}
+                                placeholder={amount > 0 ? `${amount} ៛` : 'Enter amount'}
                                 value={entered}
                                 onChange={(e) => setEntered(e.target.value)}
                             />
@@ -216,7 +216,7 @@ function WelletMethod({ price = 0 }) {
                                 disabled={qrLoading || verifyLoading || waiting || !customer}
                                 className="w-full rounded-xl bg-slate-900 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
                             >
-                                {qrLoading || verifyLoading || waiting ? 'Processing...' : `Add to wallet $${topUp.toFixed(2)}`}
+                                {qrLoading || verifyLoading || waiting ? 'Processing...' : `Add to wallet ៛${topUp.toFixed(2)}`}
                             </button>
                         </form>
                     </div>

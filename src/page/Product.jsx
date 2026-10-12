@@ -142,7 +142,7 @@ const discount = (product) => {
                                     </span>
                                     {Number(product.costPrice) > Number(product.salePrice) && (
                                         <span className="text-xs sm:text-sm text-gray-400 line-through">
-                                            ${Number(product.costPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                            ៛{Number(product.costPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                         </span>
                                     )}
                                     <span className={`text-[10px] sm:text-xs font-semibold mt-1 ${Number(product.currentstock) > 0 ? 'text-green-600' : 'text-red-500'}`}>

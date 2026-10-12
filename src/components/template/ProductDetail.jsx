@@ -122,7 +122,7 @@ function ProductDetail() {
                             </div>
                             <div className="flex items-center gap-2 text-sm text-gray-500">
                                 <FaPaypal className="text-blue-600" />
-                                <span>{t('or_payments')} <span className="font-bold text-gray-900">$70.00</span> with Klarna / Afterpay</span>
+                                <span>{t('or_payments')} <span className="font-bold text-gray-900">៛70.00</span> with Klarna / Afterpay</span>
                             </div>
                         </div>
 

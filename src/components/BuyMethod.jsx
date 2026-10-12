@@ -109,7 +109,7 @@ function BuyMethod() {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-500">Total</span>
-                    <span className="text-lg font-bold text-slate-900">${price.toFixed(2)}</span>
+                    <span className="text-lg font-bold text-slate-900">៛{price.toFixed(2)}</span>
                   </div>
                 </div>
                 <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700">
@@ -184,7 +184,7 @@ function BuyMethod() {
                   disabled={loading || paymentLoading}
                   className="w-full rounded-xl bg-slate-900 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {loading || paymentLoading ? 'Processing...' : `Pay $${price.toFixed(2)}`}
+                  {loading || paymentLoading ? 'Processing...' : `Pay ៛${price.toFixed(2)}`}
                 </button>
             </form>
           </div>

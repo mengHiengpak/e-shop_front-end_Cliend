@@ -37,7 +37,7 @@ const translations = {
     hero_rating: '4.9/5 Rating',
     hero_reviews: '500K+ reviews',
     hero_free_shipping: 'Free Shipping',
-    hero_free_shipping_desc: 'On orders over $99',
+    hero_free_shipping_desc: 'On orders over ៛99',
 
     // Hero - Features
     customer_service: '24/7 Customer Service',
@@ -45,7 +45,7 @@ const translations = {
     secure_marketplace: 'Secure Marketplace',
     secure_marketplace_desc: '256-bit SSL encryption',
     free_shipping: 'Free Shipping',
-    free_shipping_desc: 'On all orders over $99',
+    free_shipping_desc: 'On all orders over ៛99',
     easy_returns: 'Easy Returns',
     easy_returns_desc: '30-day hassle-free returns',
 
@@ -108,7 +108,7 @@ const translations = {
     // Banner
     limited_time: 'Limited Time Offer',
     free_shipping_title: 'Free Shipping',
-    free_shipping_subtitle: 'on Orders $99+',
+    free_shipping_subtitle: 'on Orders ៛99+',
     shop_now_link: 'Shop Now →',
     clearance_event: 'Clearance Event',
     black_friday: 'Black Friday',
@@ -197,7 +197,7 @@ const translations = {
 
         // Shiping Storing
     title_storing : 'My Cart',
-    disount_store_title: 'Add $99.00 more for free shipping!',
+    disount_store_title: 'Add ៛99.00 more for free shipping!',
     status_storing: 'Your cart is empty',
     add_storing: 'Start adding items to see them here.',
 
@@ -270,7 +270,7 @@ const translations = {
     hero_rating: 'ពិន្ទុ ៤.៩/៥',
     hero_reviews: 'របស់ ៥០០K+',
     hero_free_shipping: 'ដឹកជញ្ជូនឥតគិតថ្លៃ',
-    hero_free_shipping_desc: 'សម្រាប់ការបញ្ជាទិញជាង ៩៩$',
+    hero_free_shipping_desc: 'សម្រាប់ការបញ្ជាទិញជាង ៩៩៛',
 
     // Hero - Features
     customer_service: 'សេវាកម្មអតិថិជន ២៤/៧',
@@ -278,7 +278,7 @@ const translations = {
     secure_marketplace: 'ទីផ្សារមានសុវត្ថិភាព',
     secure_marketplace_desc: 'ការអ៊ិនគ្រីប SSL ២៥៦ បីត',
     free_shipping: 'ដឹកជញ្ជូនឥតគិតថ្លៃ',
-    free_shipping_desc: 'សម្រាប់ការបញ្ជាទិញទាំងអស់ជាង ៩៩$',
+    free_shipping_desc: 'សម្រាប់ការបញ្ជាទិញទាំងអស់ជាង ៩៩៛',
     easy_returns: 'ត្រឡប់មកវិញងាយស្រួល',
     easy_returns_desc: 'ត្រឡប់មកវិញក្នុងរយៈពេល ៣០ ថ្ងៃ',
 
@@ -341,7 +341,7 @@ const translations = {
     // Banner
     limited_time: 'ការផ្តល់ជូនពិសេស',
     free_shipping_title: 'ដឹកជញ្ជូនឥតគិតថ្លៃ',
-    free_shipping_subtitle: 'សម្រាប់ការបញ្ជាទិញជាង ៩៩$',
+    free_shipping_subtitle: 'សម្រាប់ការបញ្ជាទិញជាង ៩៩៛',
     shop_now_link: 'ទិញឥឡូវ →',
     clearance_event: 'ព្រឹត្តិការណ៍បញ្ចុះតម្លៃ',
     black_friday: 'ថ្ងៃសុក្រខ្មៅ',

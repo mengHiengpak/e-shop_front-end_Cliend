@@ -154,7 +154,7 @@ function ProductStore({open, closeOpen}) {
                                         <div className="text-right">
                                             <p className="text-[11px] uppercase tracking-wider text-gray-400">Line Total</p>
                                             <p className="font-serif text-lg font-semibold text-gray-900">
-                                                ${(Number(item.unitPrice || 0) * item.quantity).toFixed(2)}
+                                                ៛{(Number(item.unitPrice || 0) * item.quantity).toFixed(2)}
                                             </p>
                                         </div>
                                     </div>
