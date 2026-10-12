@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {api} from "../../config/app.js";
 import toast from "react-hot-toast";
+import {refetchCustomerStore} from "./useCustomerStore.js";
 
 
 export const useDeleteCustomerStoreById = () => {
@@ -11,6 +12,7 @@ export const useDeleteCustomerStoreById = () => {
         try {
             const res = await api.delete(`/customerstore/${id}`)
             toast.success(res?.data?.message || 'Item removed successfully!')
+            refetchCustomerStore()
             return res.data
         } catch (e) {
             const msg = e.response?.data?.error || e.response?.data?.message || e?.message || 'server is error!'

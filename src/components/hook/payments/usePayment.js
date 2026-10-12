@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {api} from "../../../config/app.js";
 import toast from "react-hot-toast";
+import {refetchCustomerStore} from "../useCustomerStore.js";
 
 export const usePayment = () => {
     const [loading, setLoading] = useState(false)
@@ -20,6 +21,7 @@ export const usePayment = () => {
             if (result?.success) {
                 toast.success(result?.message || body?.message || 'Payment successful!')
             }
+            refetchCustomerStore()
             return result
         } catch (e) {
             const msg = e.response?.data?.message || e.response?.data?.error || e.message || 'server is error!'

@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 function ProductStore({open, closeOpen}) {
     const { t } = useLanguage()
     const { data: customer } = useCurrent()
-    const { data, isLoading, refetch } = useCustomerStore(customer?._id)
+    const { data, isLoading } = useCustomerStore(customer?._id)
     const { data: allProducts } = useProduct()
     const { remove, loading } = useDeleteCustomerStoreById()
 
@@ -51,7 +51,6 @@ function ProductStore({open, closeOpen}) {
         if (!storeId) return
         await remove(storeId)
         setRemoved(prev => [...prev, storeId])
-        refetch()
     }
 
     const subtotal = stored.reduce((sum, it) => sum + Number(it.unitPrice || 0) * it.quantity, 0)

@@ -37,7 +37,7 @@ function Field({ icon: Icon, label, name, type = 'text', placeholder, value, onC
 
 function ProductStorePayment() {
     const { data: customer } = useCurrent()
-    const { data, isLoading, refetch } = useCustomerStore(customer?._id)
+    const { data, isLoading } = useCustomerStore(customer?._id)
     const { data: allProducts } = useProduct()
     const { payment, loading: paymentLoading } = usePayment()
 
@@ -81,7 +81,6 @@ function ProductStorePayment() {
         if (storeId) {
             await payment(storeId, { paidAmount: totalCost, ...form })
         }
-        refetch()
     }
 
     return (

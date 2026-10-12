@@ -1,43 +1,69 @@
-import {useEffect, useState} from "react";
+import {useEffect, useSyncExternalStore} from "react";
 import {api} from "../../config/app.js";
 import toast from "react-hot-toast";
 
-export const useCustomerStore = (customerId) => {
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+let state = {data: null, isLoading: false, error: null};
+let customerId = null;
+const listeners = new Set();
 
-    const fetchStore = async (id) => {
-        if (!id) return
-        setIsLoading(true)
-        setError(null)
-        try {
-            const res = await api.get(`/customerstore/customer/${id}`)
-            setData(res.data)
-        } catch (e) {
-            const status = e.response?.status
-            if (status === 404 || status === 400) {
-                setData(null)
-            } else {
-                const msg = e.response?.data?.message || e.response?.data?.error || e.message || 'server is error!'
-                setError(msg)
-                toast.error(msg)
-                console.error(msg)
-            }
-        } finally {
-            setIsLoading(false)
+const emit = () => {
+    listeners.forEach((listener) => listener());
+};
+
+const setState = (patch) => {
+    state = {...state, ...patch};
+    emit();
+};
+
+const subscribe = (listener) => {
+    listeners.add(listener);
+    return () => {
+        listeners.delete(listener);
+    };
+};
+
+const getSnapshot = () => state;
+
+const fetchStore = async (id = customerId) => {
+    if (!id) return;
+    const isNewCustomer = customerId !== id;
+    customerId = id;
+    setState({isLoading: true, error: null, ...(isNewCustomer ? {data: null} : {})});
+    try {
+        const res = await api.get(`/customerstore/customer/${id}`);
+        setState({data: res.data});
+    } catch (e) {
+        const status = e.response?.status;
+        if (status === 404 || status === 400) {
+            setState({data: null});
+        } else {
+            const msg = e.response?.data?.message || e.response?.data?.error || e.message || 'server is error!';
+            setState({error: msg});
+            toast.error(msg);
+            console.error(msg);
         }
+    } finally {
+        setState({isLoading: false});
     }
+};
+
+export const refetchCustomerStore = (id) => fetchStore(id || customerId);
+
+export const useCustomerStore = (id) => {
+    const snapshot = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
     useEffect(() => {
-        fetchStore(customerId)
+        if (id) {
+            fetchStore(id);
+        } else {
+            customerId = null;
+            setState({data: null, isLoading: false, error: null});
+        }
         // oxlint-disable-next-line react-hooks/exhaustive-deps
-    }, [customerId])
+    }, [id]);
 
     return {
-        data,
-        isLoading,
-        error,
-        refetch: () => fetchStore(customerId)
-    }
-}
+        ...snapshot,
+        refetch: () => fetchStore(id),
+    };
+};
